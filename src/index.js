@@ -22,7 +22,7 @@ class App extends React.Component {
 
         // THIS IS THE ONLY TIME we do direct assignment
         // to this.state
-        this.state = { lat: null , errMessage: ''};
+        this.state = { lat: null , errMessage: null};
 
         navigator.geolocation.getCurrentPosition(
             (position)=> {
@@ -41,12 +41,16 @@ class App extends React.Component {
     // React requirement
     render(){
         
-        return (
-            <div>
-                latitude: {this.state.lat} <br />
-                Error: {this.state.errMessage}
-            </div>
-        );
+        if(!this.state.lat && this.state.errMessage){
+            return <div>Error: {this.state.errMessage}</div>
+        }
+
+        if(this.state.lat && !this.state.errMessage){
+            return <div>latitude: {this.state.lat} </div>
+        }
+
+        return <div>Loading!</div>
+        
     }
 };
 
