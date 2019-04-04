@@ -16,14 +16,14 @@ class App extends React.Component {
 
     renderBody(){
         if(!this.state.lat && this.state.errMessage){
-            return <div>Error: {this.state.errMessage}</div>
+            return <div>Error: {this.state.errMessage}</div>;
         }
 
         if(this.state.lat && !this.state.errMessage){
-            return <SeasonDisplay lat={this.state.lat}> </SeasonDisplay>
+            return <SeasonDisplay lat={this.state.lat}> </SeasonDisplay>;
         }
 
-        return <Spinner message="Please accept location request" /> 
+        return <Spinner message="Please accept location request" /> ;
     }
     // React requirement
     render(){
